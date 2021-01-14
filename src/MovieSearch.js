@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search';
 
 
-function MovieSearch() {
+function MovieSearch(props) {
     const [formInput, setFormInput] = useState('')
 
     function changeHandler(e) {
         setFormInput(e.target.value)
-        console.log(e.target.value)
     }
 
     function submitHandler(e) {
         e.preventDefault()
         console.log(formInput)
+        props.appSubmitHandler(formInput)
         setFormInput('')
     }
 
