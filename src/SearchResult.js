@@ -1,11 +1,11 @@
 import React from 'react'
 import './CSS/SearchResult.css'
 
-function SearchResult() {
+function SearchResult(props) {
    
         return (
             <div>
-                <p>This is the search result box!</p>
+                <p>Results rendered here!</p>
             </div>
         )
     

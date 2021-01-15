@@ -13,7 +13,6 @@ class App extends React.Component{
   }
   
   componentDidMount() {
-    // const url = `http://www.omdbapi.com/?i=${this.props.formValue}&apikey=${process.env.REACT_APP_OMDB_KEY}`
       const url = `https://www.omdbapi.com/?t=${this.state.searchVal}&apikey=${process.env.REACT_APP_OMDB_KEY}`
     
       fetch(url)
