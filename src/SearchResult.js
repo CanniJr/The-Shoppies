@@ -1,14 +1,24 @@
 import React from 'react'
+import Movie from './Movie'
 import './CSS/SearchResult.css'
 
-function SearchResult({ movies }) {
-   
-        return (
-            <div>
-                <p>Render results here</p>
-                <img src='' alt ='' />
-            </div>
-        )
+function SearchResult({ clickHandler, searchVal, movies }) {
+
+    // user input will return each search results in <li> tags
+    function renderResults() {
+        return movies?.map(movie => {
+            return <Movie clickHandler={clickHandler} movie={movie} />
+        })
+    }
+
+    return (
+        <div>
+            <h5>Results for '{searchVal}'</h5>
+            <ul>
+                {renderResults()}
+            </ul>
+        </div>
+    )
     
 }
 

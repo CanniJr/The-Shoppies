@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
-import MovieSearch from './MovieSearch'
+import Nominations from './Nominations'
+import Search from './Search'
 import SearchResult from './SearchResult'
   
 // process.env.REACT_APP_OMDB_KEY
@@ -33,6 +34,7 @@ class App extends React.Component{
     .catch(console.error())
   }
 
+
   renderResult = (movResults) => {
     movResults.Error ?
       this.setState({
@@ -45,14 +47,19 @@ class App extends React.Component{
       })
   }
 
+  clickHandler = (e) => {
+    console.log(e)
+  }
+
   render() {
     
       return (
         <div className="app">
           {console.log(this.state.movies)}
           <Header />
-          <MovieSearch changeHandler={this.changeHandler} searchVal={this.state.searchVal}/>
-          <SearchResult movies={this.state.movies}/>
+          <Search changeHandler={this.changeHandler} searchVal={this.state.searchVal} error={this.state.error}/>
+          <SearchResult movies={this.state.movies} searchVal={this.state.searchVal} clickHandler={this.clickHandler} />
+          <Nominations />
         </div>
       );
   }

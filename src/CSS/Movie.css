@@ -1,0 +1,12 @@
+.movie {
+	display: flex;
+	align-items: center;
+}
+
+.movie > li {
+	padding: 3px;
+}
+
+.movie > button {
+	margin-left: 20px;
+}
