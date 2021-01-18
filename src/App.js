@@ -5,26 +5,44 @@ import SearchResult from './SearchResult'
   
 // process.env.REACT_APP_OMDB_KEY
 
+const url = `https://www.omdbapi.com/?&apikey=${process.env.REACT_APP_OMDB_KEY}&type=movie&s=`
 class App extends React.Component{
   state = {
     searchVal: '',
-    movies: []
+    error: '',
+    movies: [],
+    nominations: []
     
-  }
-  
-  componentDidMount() {
-      const url = `https://www.omdbapi.com/?t=${this.state.searchVal}&apikey=${process.env.REACT_APP_OMDB_KEY}`
-    
-      fetch(url)
-          .then(resp => resp.json())
-          .then(data => {
-              this.setState({ movies: data })
-          })
   }
 
-  
-  appSubmitHandler = (formInput) => {
-    this.setState({ searchVal: formInput })
+  // Sets the searchVal state and calls the fetchResults function
+  changeHandler = (e) => {
+    console.log(e.target.value)
+    this.setState({ searchVal: e.target.value })
+    this.fetchResults(e.target.value)
+  }
+
+
+  // Fetch as a callback function for search results
+  fetchResults = (input) => {
+      fetch(url + input)
+          .then(resp => resp.json())
+          .then(results => {
+            this.renderResult(results)
+          })
+    .catch(console.error())
+  }
+
+  renderResult = (movResults) => {
+    movResults.Error ?
+      this.setState({
+        error: movResults.Error,
+        movies: null
+      })
+      : this.setState({
+        error: null,
+        movies: movResults['Search']
+      })
   }
 
   render() {
@@ -33,8 +51,8 @@ class App extends React.Component{
         <div className="app">
           {console.log(this.state.movies)}
           <Header />
-          <MovieSearch appSubmitHandler={this.appSubmitHandler}/>
-          <SearchResult formValue={this.state.searchVal}/>
+          <MovieSearch changeHandler={this.changeHandler} searchVal={this.state.searchVal}/>
+          <SearchResult movies={this.state.movies}/>
         </div>
       );
   }

@@ -1,11 +1,12 @@
 import React from 'react'
 import './CSS/SearchResult.css'
 
-function SearchResult(props) {
+function SearchResult({ movies }) {
    
         return (
             <div>
-                <p>Results rendered here!</p>
+                <p>Render results here</p>
+                <img src='' alt ='' />
             </div>
         )
     
