@@ -1,0 +1,12 @@
+.nominee {
+	display: flex;
+	align-items: center;
+}
+
+.nominee > button {
+	margin-left: 20px;
+}
+
+.nominee > li {
+	padding: 3px;
+}

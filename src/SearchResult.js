@@ -7,7 +7,7 @@ function SearchResult({ clickHandler, searchVal, movies }) {
     // user input will return each search results in <li> tags
     function renderResults() {
         return movies?.map(movie => {
-            return <Movie clickHandler={clickHandler} movie={movie} />
+            return <Movie key={movie.imdbID} clickHandler={clickHandler} movie={movie} />
         })
     }
 

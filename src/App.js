@@ -47,8 +47,17 @@ class App extends React.Component{
       })
   }
 
-  clickHandler = (e) => {
-    console.log(e)
+  addToNomination = (nomination) => {
+    let newArray = [...this.state.nominations]
+    newArray.push(nomination)
+    this.setState({
+      nominations: newArray
+    })
+  }
+
+  removeFromNomination = (nomination) => {
+    let newArray = [...this.state.nominations]
+    let index = ////
   }
 
   render() {
@@ -58,8 +67,8 @@ class App extends React.Component{
           {console.log(this.state.movies)}
           <Header />
           <Search changeHandler={this.changeHandler} searchVal={this.state.searchVal} error={this.state.error}/>
-          <SearchResult movies={this.state.movies} searchVal={this.state.searchVal} clickHandler={this.clickHandler} />
-          <Nominations />
+          <SearchResult movies={this.state.movies} searchVal={this.state.searchVal} clickHandler={this.addToNomination} />
+          <Nominations nominations={ this.state.nominations } clickHandler={this.removeFromNomination} />
         </div>
       );
   }

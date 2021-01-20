@@ -1,0 +1,11 @@
+.nomination__disp {
+	display: flex;
+}
+
+.list {
+	padding: 3px;
+}
+
+.list > button {
+	margin-left: 20px;
+}
